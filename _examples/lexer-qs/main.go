@@ -5,6 +5,7 @@ import (
 	"log"
 	"strings"
 
+	cregex "github.com/mingrammer/commonregex"
 	// pp "github.com/sniperkit/colly/plugins/app/debug/pp"
 
 	lexmachine "github.com/sniperkit/lexmachine/pkg"
@@ -28,6 +29,7 @@ func init() {
 }
 
 var (
+	crGitRepo = cregex.GitRepoPattern
 
 	// queries
 	queryString = []string{
@@ -37,7 +39,7 @@ var (
 		`rows=(1,10), cols=("id", "name", "full_name", "description", "language", "stargazers_count", "forks_count")`,
 		`cells=(A1,B2), row=(1,2), cols=(A,B), rows=[1:7], cols=["id", "name", "full_name", "description", "language", "stargazers_count", "forks_count"]`,
 		//
-		`block=(A1,B2), row=(1,2), cols=(A,B), prefix_path="./shared/dump" to_file=true format="json" rows=[1:7], cols=["id", "name", "full_name", "description", "language", "stargazers_count", "forks_count"]`,
+		`block=(A1,B2), row=(1,2), cols=(A,B), prefix_path="./shared/dump.txt" to_file=true format="json" rows=[1:7], cols=["id", "name", "full_name", "description", "language", "stargazers_count", "forks_count"]`,
 	}
 )
 
@@ -88,8 +90,8 @@ func initTokens() {
 		"...",
 		";",
 		":",
-		"'",
-		"\"",
+		// "'",
+		// "\"",
 		// "->",
 		// "--",
 	}
@@ -174,6 +176,7 @@ var (
 		"ID",
 		"DATASET",
 		"DATASET_DIR",
+		"DATASET_FILEPATH",
 		"DATASET_INTO_FILE",
 		"BLOCK_ALPHA",
 		"BLOCK_FUNC",
@@ -186,6 +189,8 @@ var (
 		"COLS_LIST",
 		"COLS_RANGE",
 		"ROW",
+		"LINK",
+		"GIT_REPO",
 		"COL",
 		"COMMENT",
 		"LOWER",
@@ -214,7 +219,7 @@ func initLexer() (*lexmachine.Lexer, error) {
 		lexer.Add([]byte(strings.ToLower(name)), token(name))
 	}
 
-	lexer.Add([]byte("( |\t|\n|\r)+"), skip)
+	// lexer.Add([]byte("( |\t|\n|\r)+"), skip)
 	// lexer.Add([]byte(`(\(|\)|\[|\])+`), skip)
 	// lexer.Add([]byte(`=`), skip)
 	// lexer.Add([]byte("\""), skip)
@@ -225,13 +230,17 @@ func initLexer() (*lexmachine.Lexer, error) {
 	lexer.Add([]byte(`((format|formats))\[((:[a-zA-Z0-9-_\"\']+)|([a-zA-Z0-9-_\"\']+(,[a-zA-Z0-9-_\"\']+)*))(\])+`), token("FORMAT"))
 	lexer.Add([]byte(`((format|formats))\(((:[a-zA-Z0-9-_\"\']+)|([a-zA-Z0-9-_\"\']+(,[a-zA-Z0-9-_\"\']+)*))(\))+`), token("FORMAT"))
 
-	lexer.Add([]byte(`"([a-zA-Z0-9-_\\.\\:]*)"`), token("DATASET_DIR"))
+	lexer.Add([]byte(`([a-zA-Z0-9-_\.\:]*)`), token("DATASET_DIR"))
 
 	lexer.Add([]byte(`(col|cols)`), token("AXIS_X"))
 	lexer.Add([]byte(`(rows|row)`), token("AXIS_Y"))
 
 	// lexer.Add([]byte(SELECT_BLOCK), token("EXCEL_BLOCK"))
 	lexer.Add([]byte(SELECT_CELL), token("EXCEL_CELL"))
+
+	// lexer.Add([]byte("^(?:[\\w]\\:|\\)(\\[a-z_\\-\\s0-9\\.]+)+\\.(txt|gif|pdf|doc|docx|xls|xlsx)$"), token("DATASET_FILEPATH"))
+	// lexer.Add([]byte(cregex.LinkPattern), token("LINK"))
+	// lexer.Add([]byte(cregex.GitRepoPattern), token("GIT_REPO"))
 
 	lexer.Add([]byte(SELECT_COLS_LIST), token("COLS_LIST"))
 	lexer.Add([]byte(SELECT_COLS_RANGE), token("COLS_RANGE"))
