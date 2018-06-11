@@ -1,0 +1,9 @@
+package: github.com/sniperkit/lexmachine
+import:
+- package: github.com/timtadh/data-structures
+  subpackages:
+  - hashtable
+  - linked
+  - set
+  - types
+- package: github.com/timtadh/getopt

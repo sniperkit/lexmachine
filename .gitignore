@@ -1,5 +1,16 @@
 *.swp
 *.swo
+
 bin
-pkg
+bin/
+bin/lex*
+
+dist
+dist/
+dist/lex*
+
+
 vendor
+vendor/
+vendor/*
+vendor/**

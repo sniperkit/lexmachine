@@ -1,0 +1,19 @@
+hash: f80d216b7b9f3d38662ff069f093080202d008462648e286c07bb3354391c888
+updated: 2018-06-11T09:51:34.23606379+02:00
+imports:
+- name: github.com/timtadh/data-structures
+  version: 0e5c15570a1c8da40731a215cda30656e33e67b6
+  subpackages:
+  - errors
+  - hashtable
+  - linked
+  - list
+  - rand
+  - set
+  - test
+  - tree
+  - tree/avl
+  - types
+- name: github.com/timtadh/getopt
+  version: 29f1208d827b977f2e4060ca9923032b34094187
+testImports: []
