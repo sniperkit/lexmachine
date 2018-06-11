@@ -2,16 +2,13 @@ package main
 
 import (
 	"fmt"
-	logpkg "log"
 	"os"
-)
 
-import (
+	logpkg "log"
+
 	"github.com/timtadh/getopt"
-)
 
-import (
-	"github.com/timtadh/lexmachine/frontend"
+	frontend "github.com/sniperkit/lexmachine/pkg/frontend"
 )
 
 var log *logpkg.Logger

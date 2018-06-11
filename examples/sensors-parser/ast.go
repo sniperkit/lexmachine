@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/timtadh/lexmachine"
+	"github.com/sniperkit/lexmachine/pkg"
 )
 
 // Node is a very simple AST/Parse Tree node. It stores a Name (required), a

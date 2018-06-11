@@ -3,7 +3,7 @@
 package main
 
 import (
-    "github.com/timtadh/lexmachine"
+    "github.com/sniperkit/lexmachine/pkg"
 )
 
 %}

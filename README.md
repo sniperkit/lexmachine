@@ -5,8 +5,8 @@ By Tim Henderson
 Copyright 2014-2017, All Rights Reserved. Made available for public use under
 the terms of a BSD 3-Clause license.
 
-[![GoDoc](https://godoc.org/github.com/timtadh/lexmachine?status.svg)](https://godoc.org/github.com/timtadh/lexmachine)
-[![ReportCard](https://goreportcard.com/badge/github.com/timtadh/lexmachine)](https://goreportcard.com/report/github.com/timtadh/lexmachine)
+[![GoDoc](https://godoc.org/github.com/sniperkit/lexmachine/pkg?status.svg)](https://godoc.org/github.com/sniperkit/lexmachine/pkg)
+[![ReportCard](https://goreportcard.com/badge/github.com/sniperkit/lexmachine/pkg)](https://goreportcard.com/report/github.com/sniperkit/lexmachine/pkg)
 
 ## What?
 
@@ -38,10 +38,10 @@ analysis system for Go.
 -   [Tutorial](http://hackthology.com/writing-a-lexer-in-go-with-lexmachine.html)
 -   [How It Works](http://hackthology.com/faster-tokenization-with-a-dfa-backend-for-lexmachine.html)
 -   [Narrative Documentation](#narrative-documentation)
--   [Using `lexmachine` with `goyacc`](https://github.com/timtadh/lexmachine/tree/master/examples/sensors-parser)
+-   [Using `lexmachine` with `goyacc`](https://github.com/sniperkit/lexmachine/pkg/tree/master/examples/sensors-parser)
     Required reading if you want to use `lexmachine` with the standard yacc
     implementation for Go (or its derivatives).
--   [![GoDoc](https://godoc.org/github.com/timtadh/lexmachine?status.svg)](https://godoc.org/github.com/timtadh/lexmachine)
+-   [![GoDoc](https://godoc.org/github.com/sniperkit/lexmachine/pkg?status.svg)](https://godoc.org/github.com/sniperkit/lexmachine/pkg)
 
 ### What is in Box
 
@@ -534,7 +534,7 @@ class is specified by putting a `^` just after the opening bracket.
 ### Grammar
 
 The canonical grammar is found in the handwritten recursive descent
-[parser](https://github.com/timtadh/lexmachine/blob/master/frontend/parser.go).
+[parser](https://github.com/sniperkit/lexmachine/pkg/blob/master/frontend/parser.go).
 This section should be considered documentation not specification.
 
 Note: e stands for the empty string
@@ -610,8 +610,8 @@ import (
 )
 
 import (
-	"github.com/timtadh/lexmachine"
-	"github.com/timtadh/lexmachine/machines"
+	"github.com/sniperkit/lexmachine/pkg"
+	"github.com/sniperkit/lexmachine/pkg/machines"
 )
 
 func main() {
@@ -663,8 +663,8 @@ import (
 )
 
 import (
-	"github.com/timtadh/lexmachine"
-	"github.com/timtadh/lexmachine/machines"
+	"github.com/sniperkit/lexmachine/pkg"
+	"github.com/sniperkit/lexmachine/pkg/machines"
 )
 
 var Literals []string       // The tokens representing literal strings

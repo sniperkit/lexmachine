@@ -12,8 +12,8 @@ some understanding of
 ## Running the example
 
 ```sh
-$ go generate -x -v github.com/timtadh/lexmachine/examples/sensors-parser
-$ go install github.com/timtadh/lexmachine/examples/sensors-parser
+$ go generate -x -v github.com/sniperkit/lexmachine/pkg/examples/sensors-parser
+$ go install github.com/sniperkit/lexmachine/pkg/examples/sensors-parser
 $ cat examples/sensors-parser/sensors.conf | sensors-parser
 ```
 

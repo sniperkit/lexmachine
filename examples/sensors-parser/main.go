@@ -7,8 +7,8 @@ import (
 	"log"
 	"os"
 
+	"github.com/sniperkit/lexmachine/pkg"
 	"github.com/timtadh/getopt"
-	"github.com/timtadh/lexmachine"
 )
 
 func main() {

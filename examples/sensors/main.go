@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
+	"github.com/sniperkit/lexmachine/pkg"
+	"github.com/sniperkit/lexmachine/pkg/machines"
 	"github.com/timtadh/getopt"
-	"github.com/timtadh/lexmachine"
-	"github.com/timtadh/lexmachine/machines"
 )
 
 var tokens = []string{
