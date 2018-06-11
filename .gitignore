@@ -14,3 +14,8 @@ vendor
 vendor/
 vendor/*
 vendor/**
+
+shared/tmp
+shared/tmp/
+shared/tmp/*
+shared/tmp/**

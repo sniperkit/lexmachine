@@ -11,6 +11,9 @@ import (
 	frontend "github.com/sniperkit/lexmachine/pkg/frontend"
 )
 
+// Must be set at build via -ldflags "-X main.VERSION=`cat VERSION`"
+const VERSION string
+
 var log *logpkg.Logger
 
 func init() {
