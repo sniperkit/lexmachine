@@ -6,9 +6,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/sniperkit/lexmachine/pkg"
-	"github.com/sniperkit/lexmachine/pkg/machines"
 	"github.com/timtadh/getopt"
+
+	lexmachine "github.com/sniperkit/lexmachine/pkg"
+	machines "github.com/sniperkit/lexmachine/pkg/machines"
 )
 
 var tokens = []string{
@@ -88,9 +89,10 @@ func scan(text []byte) error {
 }
 
 func main() {
-	short := "hdn"
+	short := "hvdn"
 	long := []string{
 		"help",
+		"version",
 		"dfa",
 		"nfa",
 	}
@@ -105,6 +107,9 @@ func main() {
 	dfa := false
 	for _, oa := range optargs {
 		switch oa.Opt() {
+		case "-v", "--version":
+			fmt.Printf("lexmachine: v%s\n", lexmachine.Version)
+			os.Exit(0)
 		case "-h", "--help":
 			fmt.Println("Tokenizes the standard input 1000 times")
 			fmt.Println("Must supply either --nfa or --dfa. try cat /etc/sensors*.conf | sensors --nfa")

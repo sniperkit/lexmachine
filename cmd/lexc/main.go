@@ -8,11 +8,9 @@ import (
 
 	"github.com/timtadh/getopt"
 
+	lexmachine "github.com/sniperkit/lexmachine/pkg"
 	frontend "github.com/sniperkit/lexmachine/pkg/frontend"
 )
-
-// Must be set at build via -ldflags "-X main.VERSION=`cat VERSION`"
-const VERSION string
 
 var log *logpkg.Logger
 
@@ -26,6 +24,7 @@ lexc compiles regular expressions to a program suitable for lexing
 
 Options
     -h, --help                          print this message
+    -v, --version                          print version
     -p, --pattern=<pattern>             a regex pattern
 
 Specs
@@ -46,9 +45,10 @@ func usage(code int) {
 
 func main() {
 
-	short := "hp:"
+	short := "hvp:"
 	long := []string{
 		"help",
+		"version",
 		"pattern=",
 	}
 
@@ -63,6 +63,10 @@ func main() {
 		switch oa.Opt() {
 		case "-h", "--help":
 			usage(0)
+		case "-v", "--version":
+			fmt.Println(lexmachine.Version)
+			fmt.Printf("lexmachine: %s\n", lexmachine.Version)
+			os.Exit(0)
 		case "-p", "--pattern":
 			patterns = append(patterns, oa.Arg())
 		}

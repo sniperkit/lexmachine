@@ -22,8 +22,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/sniperkit/lexmachine/pkg"
-	"github.com/sniperkit/lexmachine/pkg/machines"
+	lexmachine "github.com/sniperkit/lexmachine/pkg"
+	machines "github.com/sniperkit/lexmachine/pkg/machines"
 )
 
 type golex struct {

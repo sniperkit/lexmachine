@@ -7,14 +7,16 @@ import (
 	"log"
 	"os"
 
-	"github.com/sniperkit/lexmachine/pkg"
 	"github.com/timtadh/getopt"
+
+	lexmachine "github.com/sniperkit/lexmachine/pkg"
 )
 
 func main() {
-	short := "h"
+	short := "hv"
 	long := []string{
 		"help",
+		"version",
 	}
 
 	_, optargs, err := getopt.GetOpt(os.Args[1:], short, long)
@@ -26,6 +28,9 @@ func main() {
 
 	for _, oa := range optargs {
 		switch oa.Opt() {
+		case "-v", "--version":
+			fmt.Printf("lexmachine: v%s\n", lexmachine.Version)
+			os.Exit(0)
 		case "-h", "--help":
 			fmt.Println("parse a sensors.conf")
 			os.Exit(0)
